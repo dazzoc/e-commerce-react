@@ -3,7 +3,7 @@ import '../styles/globals.css'
 import { Provider, createClient } from "urql";
 
 // create a client witch takes in our graphql URL
-const client = createClient({ url: "http://localhost:1337/graphql" })
+const client = createClient({ url: process.env.NEXT_PUBLIC_BACKEND_API });
 
 function MyApp({ Component, pageProps }) {
   // wrap Provider around our components and pass in the client variable

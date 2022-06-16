@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.css';
 import { useQuery } from 'urql';
 // improt the query we want to use 
 import { PRODUCT_QUERY } from '../lib/query';
+import Product from '../components/Products';
 
 
 
@@ -16,7 +17,7 @@ export default function Home() {
   // Check for the data coming in
   if(fetching) return <p>Loading...</p>;
   if(error) return <p>Oh no... {error.message}</p>;
-  console.log(data);
+  const products = data.products.data;
 
   return (
     <div className={styles.container}>
@@ -27,9 +28,10 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Next.js!
-        </h1>
+        <h1 className={styles.title}>Next.js!</h1>
+        {products.map((product) => (
+          <Product key={product.attributes.Slug} product={product} />
+        ))}
       </main>
     </div>
   )
