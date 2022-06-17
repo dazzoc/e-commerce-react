@@ -31,7 +31,7 @@ export default function Home() {
         <h1>Next.js!</h1>
         <Gallery>
           {products.map((product) => (
-            <Product key={product.attributes.Slug} product={product} />
+            <Product key={product.attributes.slug} product={product} />
           ))}
         </Gallery>
       </main>

@@ -35,3 +35,9 @@ a {
   text-decoration: none;
 }
 
+@media screen and (max-width: 392px) {
+  html,
+  body {
+    margin: 0 10px;
+  } 
+}
