@@ -1,10 +1,13 @@
 import { useQuery } from "urql";
 import { GET_PRODUCT_QUERY } from '../lib/query';
 import { useRouter } from 'next/router';
+import { useStateContext } from "../lib/context";
 import { DetailsStyle, ProductInfo, Quantity, Buy } from "../styles/ProductDetails";
 import { AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai';
 
 export default function ProductDetails(){
+    // Use Global State
+    const { qty, inceaseQty, decreaseQty } = useStateContext();
     // Fetch Slug
     const { query } = useRouter();
     // fetch graphql data
@@ -17,7 +20,6 @@ export default function ProductDetails(){
     // Check for the data coming in
     if(fetching) return <p>Loading...</p>;
     if(error) return <p>Oh no... {error.message}</p>;
-    const products = data.products.data;
     // extract our data
     const { title, description, image } = data.products.data[0].attributes;
 
@@ -29,9 +31,9 @@ export default function ProductDetails(){
                 <p>{description}</p>
                 <Quantity>
                     <span>Quantity</span>
-                    <button><AiFillMinusCircle/></button>
-                    <p>0</p>
-                    <button><AiFillPlusCircle/></button>
+                    <button><AiFillMinusCircle onClick={decreaseQty}/></button>
+                    <p>{qty}</p>
+                    <button><AiFillPlusCircle onClick={inceaseQty}/></button>
                 </Quantity>
                 <Buy>Add to cart</Buy>
             </ProductInfo>
