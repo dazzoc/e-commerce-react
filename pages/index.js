@@ -3,8 +3,11 @@ import Head from 'next/head';
 import { useQuery } from 'urql';
 // improt the query we want to use 
 import { PRODUCT_QUERY } from '../lib/query';
+// Components
 import Product from '../components/Products';
+// Styles
 import { Gallery } from '../styles/Gallery';
+
 
 
 
@@ -28,7 +31,6 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1>Next.js!</h1>
         <Gallery>
           {products.map((product) => (
             <Product key={product.attributes.slug} product={product} />
