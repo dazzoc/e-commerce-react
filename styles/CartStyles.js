@@ -10,7 +10,6 @@ export const CartWrapper = styled.div`
     z-index: 100;
     display: flex;
     justify-content: flex-end;
-    /* display: none; */
 `;
 
 export const CartStyle = styled.div`
@@ -20,9 +19,18 @@ export const CartStyle = styled.div`
     overflow-y: scroll;
     position: relative;
 
-    .exit {
+    /* .exit {
         font-size: 2rem;
         cursor: pointer;
+    } */
+
+    @media screen and (max-width: 768px){
+        width: 80%;
+        padding: 2rem 2rem;
+    }
+
+    @media screen and (max-width: 500px){
+        padding: 1rem 1rem;
     }
 `;
 
@@ -38,6 +46,15 @@ export const Card = styled.div`
     img {
         width: 6rem;
     }
+
+    @media screen and (max-width: 423px){
+        flex-direction: column;
+
+        img{
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+    }
 `;
 
 export const CardInfo = styled.div`
@@ -45,6 +62,14 @@ export const CardInfo = styled.div`
     div {
         display: flex;
         flex-direction: space-between;
+    }
+
+    @media screen and (max-width: 568px){
+        width: 40%;
+    }
+
+    @media screen and (max-width: 423px){
+        width: 100%;
     }
 `;
 
@@ -70,6 +95,3 @@ export const EmptyStyle = styled.div`
     }
 `;
 
-export const Quantity = styled.div`
-    
-`

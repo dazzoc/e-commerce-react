@@ -1,10 +1,11 @@
 import { useStateContext } from "../lib/context";
 import { GiShoppingCart } from 'react-icons/gi';
 import { AiFillPlusCircle, AiFillMinusCircle, AiOutlineClose } from 'react-icons/ai';
-import { CartWrapper, CartStyle, Card, CardInfo, EmptyStyle, Quantity } from "../styles/CartStyles";
+import { CartWrapper, CartStyle, Card, CardInfo, EmptyStyle } from "../styles/CartStyles";
+import { Quantity } from "../styles/ProductDetails";
 
 export default function Cart(){
-    const { cartItems, setShowCart } = useStateContext();
+    const { cartItems, setShowCart, onAdd, onRemove } = useStateContext();
 
     return(
         <CartWrapper onClick={() => setShowCart(false)}>
@@ -20,15 +21,15 @@ export default function Cart(){
                     cartItems.map((item) => {
                         return(
                             <Card key={item.slug}>
-                                <img src={item.image.data.attributes.formats.thumbnail.url} alt={item.title} />
+                                <img src={item.image.data.attributes.formats.small.url} alt={item.title} />
                                 <CardInfo>
                                     <h3>{item.title}</h3>
                                     <h3>${item.price}</h3>
                                     <Quantity>
-                                        <span>Qty</span>
-                                        <button><AiFillMinusCircle /></button>
-                                        <p>{item.quantity}</p>
-                                        <button><AiFillPlusCircle /></button>
+                                        <span className="cartQty qty__title" >Qty</span>
+                                        <button className="cartQty"><AiFillMinusCircle onClick={() => onRemove(item)}/></button>
+                                        <p className="cartQty">{item.quantity}</p>
+                                        <button className="cartQty"><AiFillPlusCircle onClick={() => onAdd(item, 1)}/></button>
                                     </Quantity>
                                 </CardInfo>
                             </Card>
