@@ -22,8 +22,16 @@ export const DetailsStyle = styled.div`
 export const ProductInfo = styled.div`
     width: 50%;
 
+    h3 {
+        font-size: 1.3rem;
+    }
+
+    h4 {
+        padding-bottom: 1rem;
+    }
+
     button {
-        font-size: 1rem;
+        font-size: 0.75rem;
         font-weight: medium;
         padding: 0.5rem 1rem;
         cursor: pointer;
@@ -34,7 +42,6 @@ export const ProductInfo = styled.div`
 
         h3 {
             font-size: 1.5rem;
-            margin-bottom: 1rem;
         }
     }
 `;
