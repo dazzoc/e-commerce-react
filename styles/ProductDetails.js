@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const DetailsStyle = styled.div`
     display: flex;
     justify-content: space-between;
-    margin-top: 5rem;
+    margin: 5rem 0rem;
 
     img {
         width: 40%;
