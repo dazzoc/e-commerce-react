@@ -7,7 +7,7 @@ import { AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai';
 
 export default function ProductDetails(){
     // Use Global State
-    const { qty, inceaseQty, decreaseQty } = useStateContext();
+    const { qty, inceaseQty, decreaseQty, onAdd } = useStateContext();
     // Fetch Slug
     const { query } = useRouter();
     // fetch graphql data
@@ -35,7 +35,7 @@ export default function ProductDetails(){
                     <p>{qty}</p>
                     <button><AiFillPlusCircle onClick={inceaseQty}/></button>
                 </Quantity>
-                <Buy>Add to cart</Buy>
+                <Buy onClick={() => onAdd(data.products.data[0].attributes, qty)}>Add to cart</Buy>
             </ProductInfo>
         </DetailsStyle>
     );
