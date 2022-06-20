@@ -95,3 +95,19 @@ export const EmptyStyle = styled.div`
     }
 `;
 
+export const Checkout = styled.div`
+    button{
+        background: var(--primary);
+        padding: 1rem 2rem;
+        width: 100%;
+        color: #fff;
+        margin: 2rem 0;
+        cursor: pointer;
+        border: none;
+        transition: all 0.3s ease-in-out;
+
+        &:hover{
+            transform: translateY(-2px);
+        }
+    }
+`

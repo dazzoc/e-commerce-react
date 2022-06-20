@@ -75,8 +75,16 @@ export const Quantity = styled.div`
 `;
 
 export const Buy = styled.button`
-    width: 100%;
     background: var(--primary);
+    padding: 1rem 2rem;
+    width: 100%;
     color: #fff;
-    font-weight: 500;
+    margin: 2rem 0;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease-in-out;
+
+    &:hover{
+        transform: translateY(-2px);
+    }
 `;

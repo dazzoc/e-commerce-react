@@ -1,11 +1,11 @@
 import { useStateContext } from "../lib/context";
 import { GiShoppingCart } from 'react-icons/gi';
 import { AiFillPlusCircle, AiFillMinusCircle, AiOutlineClose } from 'react-icons/ai';
-import { CartWrapper, CartStyle, Card, CardInfo, EmptyStyle } from "../styles/CartStyles";
+import { CartWrapper, CartStyle, Card, CardInfo, EmptyStyle, Checkout } from "../styles/CartStyles";
 import { Quantity } from "../styles/ProductDetails";
 
 export default function Cart(){
-    const { cartItems, setShowCart, onAdd, onRemove } = useStateContext();
+    const { cartItems, setShowCart, onAdd, onRemove, totalPrice } = useStateContext();
 
     return(
         <CartWrapper onClick={() => setShowCart(false)}>
@@ -35,6 +35,12 @@ export default function Cart(){
                             </Card>
                         );
                     })
+                )}
+                {cartItems.length >= 1 && (
+                    <Checkout>
+                        <h3>Subtotal: ${totalPrice}</h3>
+                        <button>Check Out</button>
+                    </Checkout>
                 )}
             </CartStyle>
         </CartWrapper>
