@@ -52,6 +52,7 @@ export default function Cart(){
                 variants={cards}
                 initial='hidden'
                 animate='show'
+                layout
                 >
                     {cartItems.length >= 1 && (
                         cartItems.map((item) => {
@@ -59,6 +60,7 @@ export default function Cart(){
                                 <Card 
                                 variants={card}
                                 key={item.slug}
+                                layout
                                 >
                                     <img src={item.image.data.attributes.formats.small.url} alt={item.title} />
                                     <CardInfo>
@@ -77,7 +79,7 @@ export default function Cart(){
                     )}
                 </Cards>
                 {cartItems.length >= 1 && (
-                    <Checkout>
+                    <Checkout layout>
                         <h3>Subtotal: ${totalPrice}</h3>
                         <button>Check Out</button>
                     </Checkout>
