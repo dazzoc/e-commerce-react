@@ -8,7 +8,17 @@ import Product from '../components/Products';
 // Styles
 import { Gallery } from '../styles/Gallery';
 
-
+// Framer-Motion Variants Parent
+const cards = {
+  hidden: { opacity: 1 },
+  show: {
+      opacity: 1,
+      transition: {
+          delayChildren: 0.3,
+          staggerChildren: 0.1,
+      },
+  },
+};
 
 
 export default function Home() {
@@ -31,9 +41,16 @@ export default function Home() {
       </Head>
 
       <main>
-        <Gallery>
+        <Gallery
+        variants={cards}
+        initial='hidden'
+        animate='show'
+        >
           {products.map((product) => (
-            <Product key={product.attributes.slug} product={product} />
+            <Product  
+            key={product.attributes.slug} 
+            product={product} 
+            />
           ))}
         </Gallery>
       </main>
