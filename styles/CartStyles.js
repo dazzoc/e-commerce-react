@@ -112,4 +112,8 @@ export const Checkout = styled(motion.div)`
         cursor: pointer;
         border: none;
     }
-`
+`;
+
+export const Cards = styled(motion.div)`
+    
+`;
