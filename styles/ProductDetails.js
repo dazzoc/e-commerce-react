@@ -82,9 +82,4 @@ export const Buy = styled.button`
     margin: 2rem 0;
     cursor: pointer;
     border: none;
-    transition: all 0.3s ease-in-out;
-
-    &:hover{
-        transform: translateY(-2px);
-    }
 `;

@@ -1,6 +1,7 @@
 import styled from "styled-components";
+const { motion } = require('framer-motion');
 
-export const CartWrapper = styled.div`
+export const CartWrapper = styled(motion.div)`
     position: fixed;
     top: 0;
     right: 0;
@@ -12,7 +13,7 @@ export const CartWrapper = styled.div`
     justify-content: flex-end;
 `;
 
-export const CartStyle = styled.div`
+export const CartStyle = styled(motion.div)`
     width: 600px;
     background: #f1f1f1;
     padding: 2rem 4rem;
@@ -34,7 +35,7 @@ export const CartStyle = styled.div`
     }
 `;
 
-export const Card = styled.div`
+export const Card = styled(motion.div)`
     display: flex;
     /* align-items: center; */
     justify-content: space-between;
@@ -57,7 +58,7 @@ export const Card = styled.div`
     }
 `;
 
-export const CardInfo = styled.div`
+export const CardInfo = styled(motion.div)`
     width: 60%;
     div {
         display: flex;
@@ -73,29 +74,35 @@ export const CardInfo = styled.div`
     }
 `;
 
-export const EmptyStyle = styled.div`
+export const EmptyStyle = styled(motion.div)`
     position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, 0%);
+    /* top: 0; */
+    /* transform: translate(-50%, 0%); */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100%;
-    width: 100%;
+    width: 80%;
 
     h1 {
         padding: 2rem;
+        text-align: center;
     }
 
     svg{
         font-size: 10rem;
         color: var(--secondary);
     }
+
+    @media screen and (max-width: 668px){
+        h1 {
+            font-size: 1rem;
+        }
+    }
 `;
 
-export const Checkout = styled.div`
+export const Checkout = styled(motion.div)`
     button{
         background: var(--primary);
         padding: 1rem 2rem;
@@ -104,10 +111,5 @@ export const Checkout = styled.div`
         margin: 2rem 0;
         cursor: pointer;
         border: none;
-        transition: all 0.3s ease-in-out;
-
-        &:hover{
-            transform: translateY(-2px);
-        }
     }
 `
