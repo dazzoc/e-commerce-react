@@ -18,10 +18,13 @@ export async function getServerSideProps(params){
 
 export default function Success({ order }){
     const route = useRouter();
-    console.log(order);
     return(
         <Wrapper>
-            <Card>
+            <Card
+            initial={{opacity: 0, scale: 0.75}}
+            animate={{opacity: 1, scale: 1}}
+            transition={{duration: 0.75}}
+            >
                 <Thanks>Thanks! For your order!</Thanks>
                 <Sub>A confirmation email has been sent to</Sub>
                 <Email>{order.customer_details.email}</Email>
@@ -115,6 +118,7 @@ const InfoWrapper = styled.div`
 `;
 
 const Thanks = styled.h1`
+    margin-bottom: 0.5rem;
     @media screen and (max-width: 548px){
         font-size: 1.2rem;
     }
