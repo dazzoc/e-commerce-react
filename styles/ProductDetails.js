@@ -78,8 +78,14 @@ export const Buy = styled.button`
     background: var(--primary);
     padding: 1rem 2rem;
     width: 100%;
+    height: 45px;
     color: #fff;
     margin: 2rem 0;
     cursor: pointer;
     border: none;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        transform: translateY(-2px);
+    }
 `;

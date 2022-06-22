@@ -111,9 +111,22 @@ export const Checkout = styled(motion.div)`
         margin: 2rem 0;
         cursor: pointer;
         border: none;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            transform: translateY(-2px);
+        }
     }
 `;
 
 export const Cards = styled(motion.div)`
     
+`;
+
+export const CartSvg = styled(motion.div)`
+    svg{
+        transform: scaleX(-1);
+        font-size: 2rem;
+        margin-right: 0.25rem;
+    }
 `;

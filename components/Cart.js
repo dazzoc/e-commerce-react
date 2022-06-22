@@ -1,8 +1,10 @@
 import { useStateContext } from "../lib/context";
 import { GiShoppingCart } from 'react-icons/gi';
 import { AiFillPlusCircle, AiFillMinusCircle, AiOutlineClose } from 'react-icons/ai';
-import { CartWrapper, CartStyle, Card, CardInfo, EmptyStyle, Checkout, Cards } from "../styles/CartStyles";
+import { BsCart4 } from 'react-icons/bs';
+import { CartWrapper, CartStyle, Card, CardInfo, EmptyStyle, Checkout, Cards, CartSvg } from "../styles/CartStyles";
 import { Quantity } from "../styles/ProductDetails";
+import getStripe from "../lib/getStripe";
 
 // Animation Variants
 const card = {
@@ -20,6 +22,19 @@ const cards = {
         },
     },
 };
+
+// Payment
+const handelCheckout = async () => {
+    const stripe = await getStripe();
+    const response = await fetch('/api/stripe', {
+        method: "POST",
+        headers: {'Content-Type' : 'application/json'},
+        body: JSON.stringify(cartItems)
+    });
+    const data = await response.json();
+    await stripe.redirectToCheckout({ sessionId: data.id });
+};
+
 
 export default function Cart(){
     const { cartItems, setShowCart, onAdd, onRemove, totalPrice } = useStateContext();
@@ -45,7 +60,7 @@ export default function Cart(){
                     transition={{ delay: 0.2 }}
                     >
                         <h1>You have more shopping to do 😘</h1>
-                        <GiShoppingCart />
+                        <BsCart4 />
                     </EmptyStyle>
                 )}
                 <Cards 
@@ -54,6 +69,15 @@ export default function Cart(){
                 animate='show'
                 layout
                 >
+                    {cartItems.length >= 1 && (
+                        <CartSvg
+                            initial={{ opacity: 0, x: '100%' }}
+                            animate={{ opacity: 1, x: '0%' }}
+                            transition={{ delay: 0.5, default: {duration: 0.5} }}
+                        >
+                            <BsCart4 />
+                        </CartSvg>
+                    )}
                     {cartItems.length >= 1 && (
                         cartItems.map((item) => {
                             return(
@@ -81,7 +105,7 @@ export default function Cart(){
                 {cartItems.length >= 1 && (
                     <Checkout layout>
                         <h3>Subtotal: ${totalPrice}</h3>
-                        <button>Check Out</button>
+                        <button onClick={handelCheckout}>Check Out</button>
                     </Checkout>
                 )}
             </CartStyle>

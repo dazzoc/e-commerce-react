@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { RiShoppingBag3Fill } from 'react-icons/ri';
+import { BsCart4 } from 'react-icons/bs';
 import Cart from './Cart';
 import { useStateContext } from "../lib/context";
 import { NavStyles, NavItems } from '../styles/NavStyles';
@@ -12,11 +12,11 @@ export default function Nav() {
 
     return (
         <NavStyles>
-            <Link href={'/'}>Label</Link>
+            <Link href={'/'}>Mass</Link>
             <NavItems>
                 <div onClick={() => setShowCart(true)}>
                     {totalQuantities > 0 && <motion.span animate={{ scale: 1 }} initial={{ scale: 0 }}>{totalQuantities}</motion.span>}
-                    <RiShoppingBag3Fill/>
+                    <BsCart4/>
                     <h3>Cart</h3>
                 </div>
             </NavItems>
